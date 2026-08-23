@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KNAUTO — L'excellence automobile</title>
+  <meta name="description" content="KNAUTO, plateforme de véhicules d'exception. Achetez, vendez, configurez.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-rings">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <div class="loader-core"></div>
+      </div>
+      <div class="loader-logo">KNAUTO</div>
+      <div class="loader-bar"><div class="loader-progress"></div></div>
+      <p class="loader-text">Chargement</p>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="nav-container">
+      <a href="#" class="logo" id="logo">KNAUTO</a>
+      <div class="nav-right">
+        <nav class="nav" id="mainNav">
+          <a href="#collection" class="nav-link" data-view="home">Collection</a>
+          <a href="#models" class="nav-link" data-view="home">Modèles</a>
+          <a href="#" class="nav-link" id="navPublish" style="display:none">Publier</a>
+          <a href="#" class="nav-link" id="navAdmin" style="display:none">Admin</a>
+        </nav>
+        <button class="btn btn-outline btn-sm" id="btnLogin">Connexion</button>
+        <div class="user-menu" id="userMenu" style="display:none">
+          <button class="user-btn" id="userBtn">
+            <span id="userName">Utilisateur</span>
+            <svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 5l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          </button>
+          <div class="user-dropdown" id="userDropdown">
+            <a href="#" id="linkDashboard">Mon espace</a>
+            <a href="#" id="linkLogout">Déconnexion</a>
+          </div>
+        </div>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#collection" class="mobile-link">Collection</a>
+    <a href="#models" class="mobile-link">Modèles</a>
+    <a href="#" class="mobile-link" id="mobilePublish" style="display:none">Publier</a>
+    <a href="#" class="mobile-link" id="mobileAdmin" style="display:none">Admin</a>
+    <button class="btn btn-primary" id="mobileLogin">Connexion</button>
+  </div>
+
+  <!-- ==================== PUBLIC VIEW ==================== -->
+  <div id="viewHome">
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="hero">
+        <div class="hero-bg">
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=80" alt="Voiture de luxe" class="hero-img">
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+          <p class="hero-eyebrow">Plateforme automobile de prestige</p>
+          <h1 class="hero-title">L'excellence<br>automobile</h1>
+          <p class="hero-subtitle">Achetez, vendez ou configurez des véhicules d'exception en toute simplicité.</p>
+          <div class="hero-actions">
+            <a href="#collection" class="btn btn-primary">Voir la collection</a>
+            <button class="btn btn-outline" id="heroPublishBtn">Publier un véhicule</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section class="stats">
+        <div class="stats-container">
+          <div class="stat-item"><span class="stat-number" data-target="18">0</span><span class="stat-label">Années d'excellence</span></div>
+          <div class="stat-item"><span class="stat-number" data-target="650">0</span><span class="stat-label">Véhicules livrés</span></div>
+          <div class="stat-item"><span class="stat-number" data-target="98">0</span><span class="stat-suffix">%</span><span class="stat-label">Clients satisfaits</span></div>
+          <div class="stat-item"><span class="stat-number" id="liveCarsCount">0</span><span class="stat-label">Annonces actives</span></div>
+        </div>
+      </section>
+
+      <!-- COLLECTION -->
+      <section class="collection" id="collection">
+        <div class="section-header">
+          <p class="section-eyebrow">Sélection exclusive</p>
+          <h2 class="section-title">La Collection</h2>
+          <p class="section-desc">Des véhicules soigneusement sélectionnés pour leur caractère unique.</p>
+        </div>
+        <div class="featured-grid" id="featuredGrid"></div>
+      </section>
+
+      <!-- MODELS -->
+      <section class="models" id="models">
+        <div class="section-header">
+          <p class="section-eyebrow">Toutes les annonces</p>
+          <h2 class="section-title">Véhicules disponibles</h2>
+        </div>
+        <div class="models-filter">
+          <button class="filter-btn active" data-filter="all">Tous</button>
+          <button class="filter-btn" data-filter="sport">Sport</button>
+          <button class="filter-btn" data-filter="luxe">Luxe</button>
+          <button class="filter-btn" data-filter="suv">SUV</button>
+        </div>
+        <div class="models-grid" id="modelsGrid"></div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-banner">
+        <div class="cta-content">
+          <h2>Vous avez un véhicule d'exception ?</h2>
+          <p>Publiez-le sur KNAUTO et touchez une clientèle premium.</p>
+          <button class="btn btn-primary" id="ctaPublishBtn">Publier mon véhicule</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ==================== AUTH MODAL ==================== -->
+  <div class="modal" id="authModal">
+    <div class="modal-overlay" data-close="authModal"></div>
+    <div class="modal-panel auth-panel">
+      <button class="modal-close" data-close="authModal">×</button>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Connexion</button>
+        <button class="auth-tab" data-tab="register">Inscription</button>
+      </div>
+
+      <form id="loginForm" class="auth-form active">
+        <h3>Bon retour</h3>
+        <p class="auth-desc">Connectez-vous pour publier ou acheter</p>
+        <div class="form-group">
+          <input type="email" id="loginEmail" required placeholder=" ">
+          <label>Email</label>
+        </div>
+        <div class="form-group">
+          <input type="password" id="loginPassword" required placeholder=" ">
+          <label>Mot de passe</label>
+        </div>
+        <button type="submit" class="btn btn-primary full">Se connecter</button>
+        <p class="auth-hint">Demo admin : <code>admin@knauto.fr</code> / <code>admin123</code><br>
+        Demo user : <code>user@knauto.fr</code> / <code>user123</code></p>
+      </form>
+
+      <form id="registerForm" class="auth-form">
+        <h3>Créer un compte</h3>
+        <p class="auth-desc">Rejoignez la communauté KNAUTO</p>
+        <div class="form-group">
+          <input type="text" id="regName" required placeholder=" ">
+          <label>Nom complet</label>
+        </div>
+        <div class="form-group">
+          <input type="email" id="regEmail" required placeholder=" ">
+          <label>Email</label>
+        </div>
+        <div class="form-group">
+          <input type="password" id="regPassword" required placeholder=" " minlength="6">
+          <label>Mot de passe (min. 6)</label>
+        </div>
+        <button type="submit" class="btn btn-primary full">S'inscrire</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== PUBLISH MODAL ==================== -->
+  <div class="modal" id="publishModal">
+    <div class="modal-overlay" data-close="publishModal"></div>
+    <div class="modal-panel publish-panel">
+      <button class="modal-close" data-close="publishModal">×</button>
+      <h3>Publier un véhicule</h3>
+      <p class="auth-desc">Remplissez les informations de votre annonce</p>
+      <form id="publishForm">
+        <div class="form-row">
+          <div class="form-group">
+            <input type="text" id="pubName" required placeholder=" ">
+            <label>Nom du modèle</label>
+          </div>
+          <div class="form-group">
+            <input type="number" id="pubPrice" required placeholder=" " min="1000">
+            <label>Prix (€)</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <select id="pubCategory" required>
+              <option value="">Catégorie</option>
+              <option value="sport">Sport</option>
+              <option value="luxe">Luxe</option>
+              <option value="suv">SUV</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="text" id="pubSpecs" required placeholder=" ">
+            <label>Spécifications (ex: V8 · 680 ch)</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="url" id="pubImage" placeholder=" ">
+          <label>URL de l'image (optionnel)</label>
+        </div>
+        <div class="form-group">
+          <textarea id="pubDesc" rows="3" placeholder=" "></textarea>
+          <label>Description</label>
+        </div>
+        <button type="submit" class="btn btn-primary full">Publier l'annonce</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== BUY / RESERVE MODAL ==================== -->
+  <div class="modal" id="buyModal">
+    <div class="modal-overlay" data-close="buyModal"></div>
+    <div class="modal-panel">
+      <button class="modal-close" data-close="buyModal">×</button>
+      <h3>Demande d'achat / essai</h3>
+      <p class="auth-desc" id="buyCarName">Véhicule sélectionné</p>
+      <form id="buyForm">
+        <div class="form-group">
+          <input type="text" id="buyName" required placeholder=" ">
+          <label>Votre nom</label>
+        </div>
+        <div class="form-group">
+          <input type="email" id="buyEmail" required placeholder=" ">
+          <label>Email</label>
+        </div>
+        <div class="form-group">
+          <input type="tel" id="buyPhone" placeholder=" ">
+          <label>Téléphone</label>
+        </div>
+        <div class="form-group">
+          <select id="buyType">
+            <option value="essai">Essai privé</option>
+            <option value="achat">Demande d'achat</option>
+            <option value="devis">Devis</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea id="buyMessage" rows="3" placeholder=" "></textarea>
+          <label>Message (optionnel)</label>
+        </div>
+        <button type="submit" class="btn btn-primary full">Envoyer la demande</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== USER DASHBOARD ==================== -->
+  <div id="viewUser" class="dashboard-view" style="display:none">
+    <div class="dashboard">
+      <aside class="dash-sidebar">
+        <h3>Mon espace</h3>
+        <nav class="dash-nav">
+          <button class="dash-link active" data-panel="userListings">Mes annonces</button>
+          <button class="dash-link" data-panel="userPublish">Publier</button>
+          <button class="dash-link" data-panel="userRequests">Mes demandes</button>
+        </nav>
+        <button class="btn btn-outline btn-sm" id="backToHome">← Retour au site</button>
+      </aside>
+      <main class="dash-main">
+        <div class="dash-panel active" id="userListings">
+          <h2>Mes annonces</h2>
+          <div class="dash-grid" id="userCarsGrid"></div>
+        </div>
+        <div class="dash-panel" id="userPublish">
+          <h2>Publier un véhicule</h2>
+          <form id="userPublishForm" class="dash-form">
+            <div class="form-row">
+              <div class="form-group"><input type="text" id="upName" required placeholder=" "><label>Nom du modèle</label></div>
+              <div class="form-group"><input type="number" id="upPrice" required placeholder=" " min="1000"><label>Prix (€)</label></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <select id="upCategory" required>
+                  <option value="">Catégorie</option>
+                  <option value="sport">Sport</option>
+                  <option value="luxe">Luxe</option>
+                  <option value="suv">SUV</option>
+                </select>
+              </div>
+              <div class="form-group"><input type="text" id="upSpecs" required placeholder=" "><label>Spécifications</label></div>
+            </div>
+            <div class="form-group"><input type="url" id="upImage" placeholder=" "><label>URL image (optionnel)</label></div>
+            <div class="form-group"><textarea id="upDesc" rows="3" placeholder=" "></textarea><label>Description</label></div>
+            <button type="submit" class="btn btn-primary">Publier</button>
+          </form>
+        </div>
+        <div class="dash-panel" id="userRequests">
+          <h2>Mes demandes</h2>
+          <div id="userRequestsList" class="requests-list"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ==================== ADMIN DASHBOARD ==================== -->
+  <div id="viewAdmin" class="dashboard-view" style="display:none">
+    <div class="dashboard">
+      <aside class="dash-sidebar admin-sidebar">
+        <h3>Administration</h3>
+        <nav class="dash-nav">
+          <button class="dash-link active" data-panel="adminCars">Véhicules</button>
+          <button class="dash-link" data-panel="adminAdd">Ajouter</button>
+          <button class="dash-link" data-panel="adminUsers">Utilisateurs</button>
+          <button class="dash-link" data-panel="adminStats">Statistiques</button>
+        </nav>
+        <button class="btn btn-outline btn-sm" id="adminBackHome">← Retour au site</button>
+      </aside>
+      <main class="dash-main">
+        <div class="dash-panel active" id="adminCars">
+          <div class="dash-header">
+            <h2>Tous les véhicules</h2>
+            <button class="btn btn-primary btn-sm" id="adminAddBtn">+ Ajouter</button>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table" id="adminCarsTable">
+              <thead>
+                <tr>
+                  <th>Modèle</th>
+                  <th>Catégorie</th>
+                  <th>Prix</th>
+                  <th>Propriétaire</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="dash-panel" id="adminAdd">
+          <h2>Ajouter un véhicule</h2>
+          <form id="adminAddForm" class="dash-form">
+            <div class="form-row">
+              <div class="form-group"><input type="text" id="adName" required placeholder=" "><label>Nom du modèle</label></div>
+              <div class="form-group"><input type="number" id="adPrice" required placeholder=" " min="1000"><label>Prix (€)</label></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <select id="adCategory" required>
+                  <option value="">Catégorie</option>
+                  <option value="sport">Sport</option>
+                  <option value="luxe">Luxe</option>
+                  <option value="suv">SUV</option>
+                </select>
+              </div>
+              <div class="form-group"><input type="text" id="adSpecs" required placeholder=" "><label>Spécifications</label></div>
+            </div>
+            <div class="form-group"><input type="url" id="adImage" placeholder=" "><label>URL image</label></div>
+            <div class="form-group"><textarea id="adDesc" rows="3" placeholder=" "></textarea><label>Description</label></div>
+            <button type="submit" class="btn btn-primary">Ajouter le véhicule</button>
+          </form>
+        </div>
+
+        <div class="dash-panel" id="adminUsers">
+          <h2>Utilisateurs</h2>
+          <div class="admin-table-wrap">
+            <table class="admin-table" id="adminUsersTable">
+              <thead>
+                <tr><th>Nom</th><th>Email</th><th>Rôle</th><th>Actions</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="dash-panel" id="adminStats">
+          <h2>Statistiques</h2>
+          <div class="stats-cards">
+            <div class="stat-card"><span class="stat-val" id="statCars">0</span><span>Véhicules</span></div>
+            <div class="stat-card"><span class="stat-val" id="statUsers">0</span><span>Utilisateurs</span></div>
+            <div class="stat-card"><span class="stat-val" id="statRequests">0</span><span>Demandes</span></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast"></div>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="mainFooter">
+    <div class="footer-bottom">
+      <p>© 2026 KNAUTO. Tous droits réservés. — Démo front-end (localStorage)</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
